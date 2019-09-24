@@ -669,10 +669,10 @@ PROTOTYPE._createTitle = function()
 	.insertBefore(elements.content)
 
 	// Button-specific events
-	.delegate('.qtip-close', 'mousedown keydown mouseup keyup mouseout', function(event) {
+	.on('.qtip-close', 'mousedown keydown mouseup keyup mouseout', function(event) {
 		$(this).toggleClass('ui-state-active ui-state-focus', event.type.substr(-4) === 'down');
 	})
-	.delegate('.qtip-close', 'mouseover mouseout', function(event){
+	.on('.qtip-close', 'mouseover mouseout', function(event){
 		$(this).toggleClass('ui-state-hover', event.type === 'mouseover');
 	});
 
@@ -1383,7 +1383,7 @@ PROTOTYPE._unbind = function(targets, suffix) {
 };
 
 // Global delegation helper
-function delegate(selector, events, method) {
+function on(selector, events, method) {
 	$(document.body).on(selector,
 		(events.split ? events : events.join('.'+NAMESPACE + ' ')) + '.'+NAMESPACE,
 		function() {
@@ -1657,7 +1657,7 @@ PROTOTYPE._unassignEvents = function() {
 
 // Apply common event handlers using delegate (avoids excessive .bind calls!)
 $(function() {
-	delegate(SELECTOR, ['mouseenter', 'mouseleave'], function(event) {
+	on(SELECTOR, ['mouseenter', 'mouseleave'], function(event) {
 		var state = event.type === 'mouseenter',
 			tooltip = $(event.currentTarget),
 			target = $(event.relatedTarget || event.target),
@@ -1686,7 +1686,7 @@ $(function() {
 	});
 
 	// Define events which reset the 'inactive' event handler
-	delegate('['+ATTR_ID+']', INACTIVE_EVENTS, inactiveMethod);
+	on('['+ATTR_ID+']', INACTIVE_EVENTS, inactiveMethod);
 });
 ;// Initialization method
 function init(elem, id, opts) {

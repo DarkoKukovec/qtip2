@@ -1842,7 +1842,7 @@ QTIP = $.fn.qtip = function(options, notation, newValue)
 	}
 };
 
-console.log('triggero sam se')
+console.log('triggero sam se', $, QTip)
 // Expose class
 $.qtip = QTip;
 

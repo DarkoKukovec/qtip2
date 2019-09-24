@@ -20,6 +20,7 @@
   "use strict";
   console.log(typeof define === 'function', define.amd)
 	if(typeof define === 'function' && define.amd) {
+    console.log(factory)
 		define(['jquery'], factory);
 	}
 	else if(jQuery && !jQuery.fn.qtip) {

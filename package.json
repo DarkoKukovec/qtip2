@@ -6,7 +6,8 @@
 	"license": "MIT",
 	"main": "jquery.qtip.js",
 	"dependencies": {
-		"jquery": ">=3.4.0",
 		"imagesloaded": ">=3.0.0"
-	}
+	}, "peerDependencies": {
+		"jquery": ">=1.6.0"
+  }
 }

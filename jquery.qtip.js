@@ -28,6 +28,7 @@
 	}
 }
 (function($) {
+  console.log('jquery unutar', $);
 	"use strict"; // Enable ECMAScript "strict" operation for this function. See more: http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/
 ;// Munge the primitives - Paul Irish tip
 var TRUE = true,
@@ -3449,5 +3450,5 @@ CHECKS.ie6 = {
 		this.redraw();
 	}
 };
-;}(jQuery)));
+;}));
 }( window, document ));

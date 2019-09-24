@@ -2,7 +2,7 @@
  * qTip2 - Pretty powerful tooltips - v2.2.1
  * http://qtip2.com
  *
- * Copyright (c) 2014 
+ * Copyright (c) 2014
  * Released under the MIT licenses
  * http://jquery.org/license
  *
@@ -964,7 +964,7 @@ C.string = function(join) {
 	var x = this.x, y = this.y;
 
 	var result = x !== y ?
-		(x === 'center' || y !== 'center' && (this.precedance === Y || this.forceY) ? 
+		(x === 'center' || y !== 'center' && (this.precedance === Y || this.forceY) ?
 			[y,x] : [x,y]
 		) :
 	[x];
@@ -1049,7 +1049,7 @@ PROTOTYPE.toggle = function(state, event) {
 
 		// Cache mousemove events for positioning purposes (if not already tracking)
 		if(!trackingBound && posOptions.target === 'mouse' && posOptions.adjust.mouse) {
-			$(document).bind('mousemove.'+NAMESPACE, this._storeMouse);
+			$(document).on('mousemove.'+NAMESPACE, this._storeMouse);
 			trackingBound = TRUE;
 		}
 
@@ -1073,7 +1073,7 @@ PROTOTYPE.toggle = function(state, event) {
 
 		// Remove mouse tracking event if not needed (all tracking qTips are hidden)
 		if(trackingBound && !$(SELECTOR+'[tracking="true"]:visible', opts.solo).not(tooltip).length) {
-			$(document).unbind('mousemove.'+NAMESPACE);
+			$(document).off('mousemove.'+NAMESPACE);
 			trackingBound = FALSE;
 		}
 
@@ -1371,20 +1371,20 @@ PROTOTYPE._storeMouse = function(event) {
 PROTOTYPE._bind = function(targets, events, method, suffix, context) {
 	if(!targets || !method || !events.length) { return; }
 	var ns = '.' + this._id + (suffix ? '-'+suffix : '');
-	$(targets).bind(
+	$(targets).on(
 		(events.split ? events : events.join(ns + ' ')) + ns,
 		$.proxy(method, context || this)
 	);
 	return this;
 };
 PROTOTYPE._unbind = function(targets, suffix) {
-	targets && $(targets).unbind('.' + this._id + (suffix ? '-'+suffix : ''));
+	targets && $(targets).off('.' + this._id + (suffix ? '-'+suffix : ''));
 	return this;
 };
 
 // Global delegation helper
 function delegate(selector, events, method) {
-	$(document.body).delegate(selector,
+	$(document.body).on(selector,
 		(events.split ? events : events.join('.'+NAMESPACE + ' ')) + '.'+NAMESPACE,
 		function() {
 			var api = QTIP.api[ $.attr(this, ATTR_ID) ];
@@ -2702,17 +2702,17 @@ OVERLAY = function()
 			.hide();
 
 			// Make sure we can't focus anything outside the tooltip
-			$(document.body).bind('focusin'+MODALSELECTOR, stealFocus);
+			$(document.body).on('focusin'+MODALSELECTOR, stealFocus);
 
 			// Apply keyboard "Escape key" close handler
-			$(document).bind('keydown'+MODALSELECTOR, function(event) {
+			$(document).on('keydown'+MODALSELECTOR, function(event) {
 				if(current && current.options.show.modal.escape && event.keyCode === 27) {
 					current.hide(event);
 				}
 			});
 
 			// Apply click handler for blur option
-			elem.bind('click'+MODALSELECTOR, function(event) {
+			elem.on('click'+MODALSELECTOR, function(event) {
 				if(current && current.options.show.modal.blur) {
 					current.hide(event);
 				}

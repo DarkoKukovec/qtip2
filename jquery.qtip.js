@@ -20,15 +20,14 @@
   "use strict";
   console.log(typeof define === 'function', define.amd)
 	if(typeof define === 'function' && define.amd) {
-    console.log(factory)
-		define(['jquery'], factory);
+    define(['jquery'], factory);
 	}
 	else if(jQuery && !jQuery.fn.qtip) {
 		factory(jQuery);
 	}
 }
 (function($) {
-  console.log('jquery unutar', $);
+  console.log('jquery unutar', $().jquery);
 	"use strict"; // Enable ECMAScript "strict" operation for this function. See more: http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/
 ;// Munge the primitives - Paul Irish tip
 var TRUE = true,

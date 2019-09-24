@@ -17,11 +17,12 @@
 
 // Uses AMD or browser globals to create a jQuery plugin.
 (function( factory ) {
-	"use strict";
-	// if(typeof define === 'function' && define.amd) {
-  //   console.log('prvi');
-	// 	define(['jquery'], factory);
-	// }
+  "use strict";
+  console.log(define);
+	if(typeof define === 'function' && define.amd) {
+    console.log('prvi');
+		define(['jquery'], factory);
+	}
 	if(jQuery && !jQuery.fn.qtip) {
     console.log('drugi');
 		factory(jQuery);

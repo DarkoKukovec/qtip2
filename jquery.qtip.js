@@ -3449,5 +3449,5 @@ CHECKS.ie6 = {
 		this.redraw();
 	}
 };
-;}));
+;}(jQuery)));
 }( window, document ));

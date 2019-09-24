@@ -19,9 +19,11 @@
 (function( factory ) {
 	"use strict";
 	if(typeof define === 'function' && define.amd) {
+    console.log('prvi');
 		define(['jquery'], factory);
 	}
 	else if(jQuery && !jQuery.fn.qtip) {
+    console.log('drugi');
 		factory(jQuery);
 	}
 }
@@ -1842,7 +1844,7 @@ QTIP = $.fn.qtip = function(options, notation, newValue)
 	}
 };
 
-console.log('triggero sam se', $, QTip)
+console.log('triggero sam se', $().jquery)
 // Expose class
 $.qtip = QTip;
 

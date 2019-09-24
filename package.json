@@ -1,15 +1,12 @@
-
 {
 	"name": "qtip2",
 	"description": "Introducing... qTip2. The second generation of the advanced qTip plugin for the ever popular jQuery framework.",
 	"version": "2.2.1",
 	"author": "Craig Michael Thompson <craig@craigsworks.com> (http://craigsworks.com/)",
-	"license": [
-		"MIT"
-	],
+	"license": "MIT",
 	"main": "jquery.qtip.js",
 	"dependencies": {
-		"jquery": ">=1.6.0",
+		"jquery": ">=3.4.0",
 		"imagesloaded": ">=3.0.0"
 	}
 }
